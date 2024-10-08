@@ -15,6 +15,7 @@ linters-settings:
     exclude-generated: true
     excludes:
       - G108
+      - G115
   lll:
     line-length: 120
   misspell:
@@ -112,3 +113,5 @@ linters:
     - mnd
     - wsl
     - wrapcheck
+    - exportloopref # deprecated
+    - execinquery # deprecated

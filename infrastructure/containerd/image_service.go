@@ -7,10 +7,10 @@ import (
 	"github.com/sirupsen/logrus"
 
 	"github.com/containerd/containerd"
-	"github.com/containerd/containerd/errdefs"
 	"github.com/containerd/containerd/mount"
 	"github.com/containerd/containerd/namespaces"
 	"github.com/containerd/containerd/snapshots"
+	"github.com/containerd/errdefs"
 	"github.com/opencontainers/image-spec/identity"
 
 	"github.com/liquidmetal-dev/flintlock/core/models"
@@ -45,7 +45,7 @@ type imageService struct {
 func (im *imageService) Pull(ctx context.Context, input *ports.ImageSpec) error {
 	logger := log.GetLogger(ctx).WithField("service", "containerd_image")
 	actionMessage := fmt.Sprintf("getting image %s for owner %s", input.ImageName, input.Owner)
-	logger.Debugf(actionMessage)
+	logger.Debug(actionMessage)
 
 	nsCtx := namespaces.WithNamespace(ctx, im.config.Namespace)
 
